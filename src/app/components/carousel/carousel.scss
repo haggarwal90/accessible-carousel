@@ -1,0 +1,57 @@
+$fontSize: 14px;
+$fontWeight: 600;
+$innerCircle: 5;
+$outerCircle: $innerCircle * 3;
+$borderThickness: 1;
+$calculatedPadding: $innerCircle - $borderThickness;
+
+@function getPixel($property) {
+    @return $property + px;
+}
+  
+
+.carousel-container {
+    .carousel-controls {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        .left {
+            border: none;
+            background: transparent;
+            font-size: $fontSize;
+            font-weight: $fontWeight;
+            color: blue;
+            cursor: pointer;
+        }
+        .right {
+            border: none;
+            background: transparent;
+            font-size: $fontSize;
+            font-weight: $fontWeight;
+            color: blue;
+            cursor: pointer;
+        }
+        .item {
+            height: getPixel($innerCircle);
+            width: getPixel($innerCircle);
+            background: black;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .current {
+            height: getPixel($outerCircle);
+            width: getPixel($outerCircle);
+            border-radius: 50%;
+            background-color: red;
+            border: getPixel($borderThickness) solid green;
+            padding: getPixel($calculatedPadding);
+            .label {
+                display: block;
+                height: getPixel($innerCircle);
+                width: getPixel($innerCircle);
+                background: black;
+                border-radius: 50%;
+            }
+        }
+    }
+}
