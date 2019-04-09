@@ -6,12 +6,56 @@ const LEFT = "-1";
 const RIGHT = "9999";
 
 class Carousel extends PureComponent {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             'selected': 0,
         }
         this.handleClick = this.handleClick.bind(this);
+    }
+
+    componentDidMount() {
+        const { options, listData } = this.props;
+        const { autoSlide } = options;
+        const { selected } = this.state;
+
+        let nextValue = 1;
+
+        if (selected === listData.length - 1) {
+            nextValue = 0;
+        }
+
+        if (autoSlide) {
+            this.carouselTimeout = setTimeout(() => {
+                this.handleClick({
+                    currentTarget: {
+                        value: nextValue,
+                    }
+                });
+            }, autoSlide)
+        }
+    }
+
+    componentDidUpdate() {
+        const { options, listData } = this.props;
+        const { autoSlide } = options;
+        const { selected } = this.state;
+
+        let nextValue = selected + 1;
+
+        if (nextValue === listData.length) {
+            nextValue = 0;
+        }
+
+        if (autoSlide) {
+            this.carouselTimeout = setTimeout(() => {
+                this.handleClick({
+                    currentTarget: {
+                        value: nextValue,
+                    }
+                });
+            }, autoSlide)
+        }
     }
 
     handleClick(event) {
@@ -37,7 +81,8 @@ class Carousel extends PureComponent {
     }
     
     render() {
-        const { listData } = this.props;
+        const { listData, options } = this.props;
+        const { previous, next } = options;
         const { selected } = this.state; 
 
         if (!listData.length) {
@@ -56,7 +101,7 @@ class Carousel extends PureComponent {
                         disabled={selected === 0}
                         onClick={this.handleClick}
                     >
-                        <span className="label">Previous</span>
+                        <span className="label">{previous}</span>
                     </button>
                     {listData.map((ele, index) => {
                         const itemClass = index === selected ? "item-current" : "item";
@@ -78,11 +123,17 @@ class Carousel extends PureComponent {
                         disabled={selected === listData.length - 1}
                         onClick={this.handleClick}
                     >
-                        <span className="label">Next</span>
+                        <span className="label">{next}</span>
                     </button>
                 </div>
             </div>
         )
+    }
+
+    componentWillUnmount() {
+        if (this.carouselTimeout) {
+            clearTimeout(this.carouselTimeout);
+        }
     }
 }
 

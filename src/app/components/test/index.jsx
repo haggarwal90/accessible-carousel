@@ -25,6 +25,11 @@ export default class Test extends React.PureComponent {
         return (
             <Carousel
                 listData={myList}
+                options={{
+                    previous: 'PREV',
+                    next: 'NEXT',
+                    autoSlide: 2000,
+                }}
             />
         )
     }
