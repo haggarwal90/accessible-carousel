@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Carousel from './components/carousel';
+import Test from './components/test';
 
 ReactDOM.render(
-    <Carousel>
-    </Carousel>, document.getElementById('root')
+    <Test>
+    </Test>, document.getElementById('root')
 );

@@ -7,6 +7,7 @@ module.exports = {
     path: path.resolve('./dist'),
     filename: 'static/app/js/[name].[hash].bundle.js'
   },
+  devtool: 'source-map',
   resolve: {
     modules: ["src", "node_modules"],
     extensions: [".js", ".jsx", ".scss"]

@@ -5,6 +5,8 @@ $outerCircle: $innerCircle * 3;
 $borderThickness: 1;
 $calculatedPadding: $innerCircle - $borderThickness;
 
+$greenShade: #4f9194;
+
 @function getPixel($property) {
     @return $property + px;
 }
@@ -20,36 +22,47 @@ $calculatedPadding: $innerCircle - $borderThickness;
             background: transparent;
             font-size: $fontSize;
             font-weight: $fontWeight;
-            color: blue;
+            color: $greenShade;
             cursor: pointer;
+
+            &:disabled {
+                cursor: default;
+            }
         }
         .right {
             border: none;
             background: transparent;
             font-size: $fontSize;
             font-weight: $fontWeight;
-            color: blue;
+            color: $greenShade;
             cursor: pointer;
+
+            &:disabled {
+                cursor: default;
+            }
         }
         .item {
             height: getPixel($innerCircle);
             width: getPixel($innerCircle);
-            background: black;
+            background: #ffffff;
             border-radius: 50%;
+            padding: 0px;
+            border: none;
             cursor: pointer;
+            margin-top: 5px;
         }
-        .current {
+        .item-current {
             height: getPixel($outerCircle);
             width: getPixel($outerCircle);
             border-radius: 50%;
-            background-color: red;
-            border: getPixel($borderThickness) solid green;
+            background-color: transparent;
+            border: getPixel($borderThickness) solid $greenShade;
             padding: getPixel($calculatedPadding);
             .label {
                 display: block;
                 height: getPixel($innerCircle);
                 width: getPixel($innerCircle);
-                background: black;
+                background: #ffffff;
                 border-radius: 50%;
             }
         }
