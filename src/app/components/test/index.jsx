@@ -15,6 +15,26 @@ const data = [
     {
         name: 'Los_Angeles',
         desc: 'Test Los Angeles',
+    },
+    {
+        name: 'Los_Angeles',
+        desc: 'Test Los Angeles',
+    },
+    {
+        name: 'Los_Angeles',
+        desc: 'Test Los Angeles',
+    },
+    {
+        name: 'Los_Angeles',
+        desc: 'Test Los Angeles',
+    },
+    {
+        name: 'Los_Angeles',
+        desc: 'Test Los Angeles',
+    },
+    {
+        name: 'Los_Angeles',
+        desc: 'Test Los Angeles',
     }
 ]
 
@@ -28,7 +48,10 @@ export default class Test extends React.PureComponent {
                 options={{
                     previous: 'PREV',
                     next: 'NEXT',
-                    autoSlide: 2000,
+                    autoSlide: 0,
+                    previousColor: 'red',
+                    nextColor: 'red',
+                    activeColor: 'red',
                 }}
             />
         )
