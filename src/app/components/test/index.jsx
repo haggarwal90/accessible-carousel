@@ -13,16 +13,16 @@ export default class Test extends React.PureComponent {
                 onSlideChange={() => console.log('slide changed')}
             >
                 <Slide>
-                    <h1>Hello 1 !</h1>
+                    <h1 style={{textAlign: "center"}}>Hello 1 !</h1>
                 </Slide>
                 <Slide>
-                    <h1>Hello 2 !</h1>
+                    <h1 style={{textAlign: "center"}}>Hello 2 !</h1>
                 </Slide>
                 <Slide>
-                    <h1>Hello 3 !</h1>
+                    <h1 style={{textAlign: "center"}}>Hello 3 !</h1>
                 </Slide>
                 <Slide>
-                    <h1>Hello 4 !</h1>
+                    <h1 style={{textAlign: "center"}}>Hello 4 !</h1>
                 </Slide>
             </Carousel>
         )
