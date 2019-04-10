@@ -1,51 +1,30 @@
 import React from 'react';
 
-import List from './../list';
-import Carousel from './../carousel';
-
-const data = [
-    {
-        name: 'Chicago',
-        desc: 'Test Chicago',
-    },
-    {
-        name: 'New_York',
-        desc: 'Test New York',
-    },
-    {
-        name: 'Los_Angeles',
-        desc: 'Test Los Angeles',
-    },
-    {
-        name: 'Los_Angeles',
-        desc: 'Test Los Angeles',
-    },
-    {
-        name: 'Los_Angeles',
-        desc: 'Test Los Angeles',
-    },
-    {
-        name: 'Los_Angeles',
-        desc: 'Test Los Angeles',
-    },
-    {
-        name: 'Los_Angeles',
-        desc: 'Test Los Angeles',
-    },
-    {
-        name: 'Los_Angeles',
-        desc: 'Test Los Angeles',
-    }
-]
+import Carousel, { Slide } from './../carousel';
 
 export default class Test extends React.PureComponent {
     
     render() {
-        const myList = data.map((ele, index) => <List key={`key_${ele.name}_${index}`} name={ele.name} desc={ele.desc} />)
         return (
             <Carousel
-                listData={myList}
-            />
+                goToSlideIndex={2}
+                onPrevious={() => console.log('previous clicked')}
+                onNext={() => console.log('next clicked')}
+                onSlideChange={() => console.log('slide changed')}
+            >
+                <Slide>
+                    <h1>Hello 1 !</h1>
+                </Slide>
+                <Slide>
+                    <h1>Hello 2 !</h1>
+                </Slide>
+                <Slide>
+                    <h1>Hello 3 !</h1>
+                </Slide>
+                <Slide>
+                    <h1>Hello 4 !</h1>
+                </Slide>
+            </Carousel>
         )
     }
 }

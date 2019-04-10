@@ -1,1 +1,1 @@
-export { default } from './carousel';
+export { default, Slide } from './carousel';

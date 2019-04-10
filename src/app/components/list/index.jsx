@@ -5,8 +5,7 @@ export default class List extends React.PureComponent {
         const { name, desc } = this.props;
         return (
             <div className="carousel-caption">
-                <h3>{name}</h3>
-                <p>{desc}</p>
+                {this.props.children}
             </div>
         )
     }
