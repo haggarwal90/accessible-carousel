@@ -83,7 +83,14 @@ class Carousel extends PureComponent {
     
     render() {
         const { listData, options } = this.props;
-        const { previous, next, previousColor, nextColor, activeColor } = options;
+        const { 
+            previous,
+            next, 
+            previousColor, 
+            nextColor, 
+            activeOptionColor,
+            nonActiveOptionColor,
+        } = options;
         const { selected } = this.state; 
 
         if (!listData.length) {
@@ -91,13 +98,13 @@ class Carousel extends PureComponent {
         }
 
         return (
-            <div id="savi-carousel" className="carousel-container"> 
+            <div className="carousel-container"> 
                 <div className="carousel-inner">
                     {listData.find((ele, index) => index === this.state.selected)}
                 </div>
                 <div className="carousel-controls">
                     <button 
-                        className="left" 
+                        className="action" 
                         value={LEFT} 
                         disabled={selected === 0}
                         onClick={this.handleClick}
@@ -106,22 +113,24 @@ class Carousel extends PureComponent {
                         <span className="label">{previous}</span>
                     </button>
                     {listData.map((ele, index) => {
-                        const itemClass = index === selected ? "item-current" : "item";
+                        const itemStyle = index === selected ? 
+                            { borderColor: activeOptionColor, cursor: 'default' } : 
+                            { borderColor: "transparent" };
                         return (
-                            <button 
-                                key={`event_${ele.name}_${index}`} 
-                                className={itemClass} 
+                            <button
+                                key={`event_${ele.name}_${index}`}
+                                className="item"
                                 value={index} 
                                 disabled={selected === index}
                                 onClick={this.handleClick}
-                                style={{borderColor: itemClass === "item-current" ?  activeColor : ''}}
+                                style={itemStyle}
                             >
-                                <span className="label"></span>
+                                <span className="label" style={{background: nonActiveOptionColor}}></span>
                             </button>
                         )
                     })}
                     <button 
-                        className="right" 
+                        className="action" 
                         value={RIGHT} 
                         disabled={selected === listData.length - 1}
                         onClick={this.handleClick}
@@ -147,9 +156,10 @@ Carousel.defaultProps = {
         previous: 'PREV',
         next: 'NEXT',
         autoSlide: 0,
-        previousColor: '#4f9194',
-        nextColor: '#4f9194',
-        activeColor: '#4f9194',
+        previousColor: '#4f9194', // Color of Previous label
+        nextColor: '#4f9194', // Color of Next label
+        activeOptionColor: '#4f9194', // Color of active option outer circle
+        nonActiveOptionColor: '#ffffff', // Color of non active dot 
     },
 }
 

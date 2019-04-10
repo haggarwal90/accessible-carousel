@@ -45,14 +45,6 @@ export default class Test extends React.PureComponent {
         return (
             <Carousel
                 listData={myList}
-                options={{
-                    previous: 'PREV',
-                    next: 'NEXT',
-                    autoSlide: 0,
-                    previousColor: 'red',
-                    nextColor: 'red',
-                    activeColor: 'red',
-                }}
             />
         )
     }
